@@ -428,4 +428,14 @@ export const ARCH_FLOWS = {
       { label: "Proactive Blocking", sub: "WAF rule · firewall updated" },
     ],
   },
+  "CTEM": {
+    desc: "Doesn't wait for alerts — continuously interrogates every tool's configuration and maps combined coverage against live threat intelligence to find gaps before attackers do.",
+    steps: [
+      { label: "Full Security Stack", sub: "EDR · CSPM · WAF · IAM · SIEM" },
+      { label: "CTEM Platform", sub: "Nagomi · Reach · read-only APIs", hi: true },
+      { label: "ATT&CK Coverage Map", sub: "which techniques are you blind to?" },
+      { label: "Exposure Priority", sub: "ranked by real exploitability" },
+      { label: "Remediation Plan", sub: "specific fix per tool · verified" },
+    ],
+  },
 };

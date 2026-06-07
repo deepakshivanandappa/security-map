@@ -51,6 +51,7 @@ export const LAYER_FLOWS = {
     { id: "soar",      label: "SOAR",            sub: "auto-respond",       terms: ["SOAR"] },
     { id: "xdr",       label: "XDR",             sub: "cross-signal",       terms: ["XDR"] },
     { id: "asm",       label: "ASM",             sub: "external surface",   terms: ["Attack Surface Management"] },
+    { id: "ctem",      label: "CTEM",            sub: "expose · validate · fix", terms: ["CTEM"] },
     { id: "soc",       label: "SOC Response",    sub: "triage · hunt",      terms: [] },
   ],
 };
