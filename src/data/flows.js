@@ -428,6 +428,16 @@ export const ARCH_FLOWS = {
       { label: "Proactive Blocking", sub: "WAF rule · firewall updated" },
     ],
   },
+  "AI SOC Analyst": {
+    desc: "Autonomous AI agents investigate every alert like a senior analyst — pulling context from EDR, identity, cloud, and network across your entire stack, then writing investigation narratives. No pre-written playbooks needed; it reasons.",
+    steps: [
+      { label: "SIEM / UEBA Alert", sub: "10,000 alerts/day" },
+      { label: "AI SOC Agent", sub: "Prophet · Culminate → Datadog", hi: true },
+      { label: "Cross-Stack Investigation", sub: "EDR · identity · cloud · network" },
+      { label: "Investigation Narrative", sub: "real threat vs noise · ranked" },
+      { label: "SOAR / Human Escalation", sub: "auto-respond or page analyst" },
+    ],
+  },
   "CTEM": {
     desc: "Doesn't wait for alerts — continuously interrogates every tool's configuration and maps combined coverage against live threat intelligence to find gaps before attackers do.",
     steps: [

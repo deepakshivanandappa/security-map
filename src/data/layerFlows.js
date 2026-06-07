@@ -48,6 +48,7 @@ export const LAYER_FLOWS = {
     { id: "sources",   label: "All Sources",     sub: "logs · events",      terms: [] },
     { id: "ti",        label: "Threat Intel",    sub: "IOCs · TTPs",        terms: ["Threat Intelligence"] },
     { id: "siem_ueba", label: "SIEM / UEBA",     sub: "correlate · alert",  terms: ["SIEM", "UEBA"] },
+    { id: "ai_soc",    label: "AI SOC Analyst",  sub: "reason · triage · report", terms: ["AI SOC Analyst"] },
     { id: "soar",      label: "SOAR",            sub: "auto-respond",       terms: ["SOAR"] },
     { id: "xdr",       label: "XDR",             sub: "cross-signal",       terms: ["XDR"] },
     { id: "asm",       label: "ASM",             sub: "external surface",   terms: ["Attack Surface Management"] },
