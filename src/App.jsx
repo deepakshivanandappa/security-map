@@ -203,8 +203,7 @@ function HomeMap({ theme, isMobile, onSelectLayer, onSelectTerm }) {
           Enterprise Security Architecture
         </div>
         <div style={{ fontSize: 15, color: T.muted, lineHeight: 1.8 }}>
-          Every security layer mapped to where it sits in your stack.
-          Click any term to explore its vendors, OSS tools, and flow.
+          Ever wondered about the complex security landscape? Which tools actually compete — is there open source? Where does each one sit in your architecture, and why does it matter?
         </div>
       </div>
 
