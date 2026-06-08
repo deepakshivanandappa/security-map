@@ -428,6 +428,16 @@ export const ARCH_FLOWS = {
       { label: "Proactive Blocking", sub: "WAF rule · firewall updated" },
     ],
   },
+  "Vulnerability Scanning": {
+    desc: "Continuously scans every host, container, and network device for known CVEs — the raw data layer that CTEM and patch management build their prioritization on top of.",
+    steps: [
+      { label: "Infrastructure", sub: "EC2 · containers · network devices" },
+      { label: "Vuln Scanner", sub: "Tenable · Qualys · OpenVAS", hi: true },
+      { label: "CVE Database", sub: "NVD · CVSS score · exploit status" },
+      { label: "Prioritized Findings", sub: "critical · exploitable · in-prod" },
+      { label: "CTEM / Patch Management", sub: "fix ranked by real risk" },
+    ],
+  },
   "AI SOC Analyst": {
     desc: "Autonomous AI agents investigate every alert like a senior analyst — pulling context from EDR, identity, cloud, and network across your entire stack, then writing investigation narratives. No pre-written playbooks needed; it reasons.",
     steps: [
