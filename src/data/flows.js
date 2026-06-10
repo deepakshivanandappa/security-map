@@ -100,12 +100,13 @@ export const ARCH_FLOWS = {
     ],
   },
   "ZTNA": {
-    desc: "Per-app tunnels replace VPN — device posture and identity verified before every session, not just at login.",
+    desc: "Replaces VPN. VPN authenticates once and hands you the whole network — a stolen credential means the attacker gets everything. ZTNA runs three checks on every single request: who you are, whether your device is healthy, and exactly which app you need. Only then does it open a micro-tunnel to that one app. Nothing else is reachable.",
     steps: [
-      { label: "Remote User", sub: "mobile · laptop" },
-      { label: "ZTNA Agent", sub: "device posture check", hi: true },
-      { label: "Identity Verified", sub: "Okta MFA passed" },
-      { label: "Private App", sub: "not exposed to internet" },
+      { label: "User + Device", sub: "remote · office · mobile" },
+      { label: "1 · Who are you?", sub: "Okta SSO + MFA", hi: true },
+      { label: "2 · Device healthy?", sub: "enrolled · patched · encrypted · no jailbreak", hi: true },
+      { label: "3 · Policy Engine", sub: "user ✓ · device ✓ · app ✓" },
+      { label: "One App Only", sub: "micro-tunnel · everything else blocked" },
     ],
   },
   "FWaaS": {
@@ -173,12 +174,13 @@ export const ARCH_FLOWS = {
     ],
   },
   "ZTNA (Client)": {
-    desc: "Client agent verifies device health and identity before opening a per-app micro-tunnel — never full network access.",
+    desc: "The client-side half of ZTNA — the agent on the device that runs the posture check and opens the per-app tunnel. Ivanti (MobileIron) splits this into three pieces: Access runs the posture check, Tunnel opens the micro-tunnel, Sentry is the server-side gateway it connects to.",
     steps: [
-      { label: "Mobile / Laptop", sub: "remote worker" },
-      { label: "ZTNA Client Agent", sub: "Cloudflare · Tailscale", hi: true },
-      { label: "Posture + Identity", sub: "device health · Okta MFA" },
-      { label: "Internal Service", sub: "not exposed to internet" },
+      { label: "Device", sub: "iOS · Android · macOS · Windows" },
+      { label: "Posture Check", sub: "Ivanti Access · MDM compliance", hi: true },
+      { label: "Identity", sub: "Okta MFA · SSO" },
+      { label: "Micro-Tunnel Opens", sub: "Ivanti Tunnel · per-app only", hi: true },
+      { label: "Ivanti Sentry", sub: "server-side gateway · one app · nothing else" },
     ],
   },
   // ── AWS / CLOUD ──────────────────────────────────────────────────────────────
@@ -426,16 +428,6 @@ export const ARCH_FLOWS = {
       { label: "CTI Platform", sub: "Recorded Future · OpenCTI", hi: true },
       { label: "SIEM Enrichment", sub: "this IP = APT29 C2 server" },
       { label: "Proactive Blocking", sub: "WAF rule · firewall updated" },
-    ],
-  },
-  "Vulnerability Scanning": {
-    desc: "Continuously scans every host, container, and network device for known CVEs — the raw data layer that CTEM and patch management build their prioritization on top of.",
-    steps: [
-      { label: "Infrastructure", sub: "EC2 · containers · network devices" },
-      { label: "Vuln Scanner", sub: "Tenable · Qualys · OpenVAS", hi: true },
-      { label: "CVE Database", sub: "NVD · CVSS score · exploit status" },
-      { label: "Prioritized Findings", sub: "critical · exploitable · in-prod" },
-      { label: "CTEM / Patch Management", sub: "fix ranked by real risk" },
     ],
   },
   "AI SOC Analyst": {
