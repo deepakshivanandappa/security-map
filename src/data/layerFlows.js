@@ -53,8 +53,12 @@ export const LAYER_FLOWS = {
     { id: "soar",      label: "SOAR",            sub: "auto-respond",       terms: ["SOAR"] },
     { id: "xdr",       label: "XDR",             sub: "cross-signal",       terms: ["XDR"] },
     { id: "asm",       label: "ASM",             sub: "external surface",   terms: ["Attack Surface Management"] },
-    { id: "vuln",      label: "Vuln Scanning",   sub: "scan · CVE · prioritize", terms: ["Vulnerability Scanning"] },
     { id: "ctem",      label: "CTEM",            sub: "expose · validate · fix", terms: ["CTEM"] },
     { id: "soc",       label: "SOC Response",    sub: "triage · hunt",      terms: [] },
+  ],
+  others: [
+    { id: "security_stack", label: "Security Stack",    sub: "SIEM · EDR · SASE · CTEM",          terms: [] },
+    { id: "adjacent",       label: "Adjacent Tool",     sub: "click a term below to see how it connects", terms: ["ADEM / DEM", "Observability / APM", "ITSM", "Log Pipeline", "CMDB / Asset Inventory", "Patch Management"] },
+    { id: "outcomes",       label: "Business Outcomes", sub: "uptime · compliance · ops efficiency", terms: [] },
   ],
 };

@@ -450,4 +450,65 @@ export const ARCH_FLOWS = {
       { label: "Remediation Plan", sub: "specific fix per tool · verified" },
     ],
   },
+  // ── ADJACENT TOOLS ───────────────────────────────────────────────────────────
+  "ADEM / DEM": {
+    desc: "Not a security tool — measures end-user experience at every network hop so IT helpdesk can answer 'where is the slowdown?' instantly. Lives inside SASE platforms but serves IT ops, not the SOC.",
+    steps: [
+      { label: "User Device", sub: "laptop · mobile · home office" },
+      { label: "ISP / Last Mile", sub: "where is the bottleneck?" },
+      { label: "ADEM Monitor", sub: "ThousandEyes · Prisma ADEM", hi: true },
+      { label: "SASE / Cloud App", sub: "Zscaler · Salesforce · O365" },
+      { label: "IT Helpdesk (not SOC)", sub: "performance · uptime ops" },
+    ],
+  },
+  "Observability / APM": {
+    desc: "Measures app performance (traces, metrics, errors) — not security threats. The line blurs because Datadog and Dynatrace now sell CSPM and runtime security add-ons, but APM's core job is helping developers find why their app is slow, not detecting attackers.",
+    steps: [
+      { label: "App Code", sub: "microservices · APIs" },
+      { label: "OTel / APM Agent", sub: "traces · metrics · logs", hi: true },
+      { label: "Observability Platform", sub: "Datadog · Dynatrace · New Relic" },
+      { label: "Developer Dashboard", sub: "p99 latency · error rate · trace" },
+      { label: "Security Add-on (optional)", sub: "Datadog CSPM · runtime signals" },
+    ],
+  },
+  "ITSM": {
+    desc: "The ticketing system where security alerts become work items with owners, SLAs, and audit trails. Gartner calls this the missing 'mobilization' pillar of CTEM — you can prioritize exposures perfectly, but without a tracked workflow nothing actually gets fixed.",
+    steps: [
+      { label: "SOAR / SIEM Alert", sub: "high severity · actionable" },
+      { label: "ITSM Ticket Created", sub: "ServiceNow · Jira", hi: true },
+      { label: "Assigned to Engineer", sub: "SLA timer starts" },
+      { label: "Fix Deployed", sub: "patch · config change · rule update" },
+      { label: "CTEM Confirms Closed", sub: "exposure verified gone" },
+    ],
+  },
+  "Log Pipeline": {
+    desc: "Routes, filters, and transforms logs before they hit the SIEM. Cribl sits in front of Splunk and drops low-value logs, cutting ingestion cost 40–60%. Not a security control — data infrastructure. But essential because SIEM pricing makes unfiltered log ingestion financially impossible at scale.",
+    steps: [
+      { label: "All Log Sources", sub: "CloudTrail · Okta · WAF · K8s" },
+      { label: "Log Pipeline", sub: "Cribl · Kafka · Fluentd", hi: true },
+      { label: "Filter & Route", sub: "drop noise · normalize · enrich" },
+      { label: "SIEM", sub: "Splunk · Sentinel · reduced volume" },
+      { label: "Archive / Data Lake", sub: "S3 · Snowflake · compliance" },
+    ],
+  },
+  "CMDB / Asset Inventory": {
+    desc: "A record of every asset you own: servers, laptops, cloud instances, APIs, services. Not a security tool — but security tools can't work without it. CTEM needs to know what to scan. EDR needs to know which endpoints exist. Unglamorous, chronically underfunded, and 30–40% incomplete in most enterprises.",
+    steps: [
+      { label: "Discovery Scans", sub: "network · cloud APIs · MDM" },
+      { label: "CMDB", sub: "ServiceNow · Axonius · Armis", hi: true },
+      { label: "Complete Asset List", sub: "servers · devices · apps · APIs" },
+      { label: "Security Tools", sub: "CTEM · VM · EDR · CSPM consume this" },
+      { label: "Gap: Shadow IT", sub: "assets not in CMDB = blind spots" },
+    ],
+  },
+  "Patch Management": {
+    desc: "Deploys patches to close the CVEs that EAP/VM finds. The execution layer of CTEM's mobilization stage — IT ops owns this, not security. Average time from CVE published to patch deployed is still 60+ days in most enterprises even when the vulnerability is known and critical.",
+    steps: [
+      { label: "EAP / VM Finding", sub: "CVE critical · exploitable · in-prod" },
+      { label: "ITSM Ticket", sub: "fix this server by Friday" },
+      { label: "Patch Management", sub: "Tanium · Intune · Automox", hi: true },
+      { label: "Deploy & Verify", sub: "patch pushed · reboot · confirmed" },
+      { label: "CTEM Confirms Closed", sub: "ATT&CK gap filled · exposure gone" },
+    ],
+  },
 };
